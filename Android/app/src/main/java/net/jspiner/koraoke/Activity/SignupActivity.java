@@ -1,5 +1,6 @@
 package net.jspiner.koraoke.Activity;
 
+import android.content.Intent;
 import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -110,6 +111,11 @@ public class SignupActivity extends AppCompatActivity {
     void onSignupNextClick(){
         if(nowPage!=2){
             pagerSignup.setCurrentItem(nowPage+1);
+        }
+        else{
+            Intent intent = new Intent(SignupActivity.this, MainActivity.class);
+            startActivity(intent);
+            finish();
         }
 
     }

@@ -70,6 +70,7 @@ public class SplashActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
                 startActivity(intent);
+                finish();
             }
             else{
                 Toast.makeText(getBaseContext(),"로그인을 실패하였습니다.",Toast.LENGTH_LONG).show();

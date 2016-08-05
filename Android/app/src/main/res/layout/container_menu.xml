@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:background="#efefef"
+        android:layout_width="280dp"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:paddingTop="21dp"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@color/colorPrimaryDark"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_height="wrap_content">
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    xmlns:app="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/profile_image"
+                    app:civ_border_width="1px"
+                    app:civ_border_color="#222222"
+                    android:layout_width="73dp"
+                    android:layout_height="73dp"
+                    android:src="@drawable/img_korea_logo"/>
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_marginLeft="16dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:textColor="#ffffff"
+                        android:textSize="20sp"
+                        android:id="@+id/tv_menu_nickname"
+                        android:textStyle="bold"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="정성민"/>
+                    <TextView
+                        android:layout_marginTop="5dp"
+                        android:lines="1"
+                        android:textColor="#c3c3c3"
+                        android:textSize="12sp"
+                        android:id="@+id/tv_menu_school"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="고려대학교"/>
+                    <LinearLayout
+                        android:layout_marginTop="14dp"
+                        android:layout_width="match_parent"
+                        android:gravity="center_vertical"
+                        android:layout_height="wrap_content">
+
+                        <TextView
+                            android:textColor="#c3c3c3"
+                            android:textSize="12sp"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="프로필 설정"/>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_marginTop="13dp"
+                android:background="#c3c3c3"
+                android:layout_marginBottom="10dp"
+                android:layout_height="1px">
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="horizontal"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_vertical"
+                android:layout_height="20dp">
+
+                <TextView
+                    android:gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="내 노래 점수"
+                    android:textSize="10sp"
+                    android:textColor="#ffffff"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center_horizontal"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="130,000"
+                        android:textSize="16sp"
+                        android:id="@+id/tv_menu_tra"
+                        android:textStyle="bold"
+                        android:textColor="#ACC7FF"
+                        />
+                    <TextView
+                        android:layout_marginLeft="1dp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="kwh"
+                        android:textSize="12sp"
+                        android:textColor="#ffffff"
+                        />
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>
