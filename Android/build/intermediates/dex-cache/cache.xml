@@ -2,18 +2,18 @@
 <items version="2" >
 
     <item
-        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.android.support/cardview-v7/23.0.1/jars/classes.jar"
+        jar="/Users/JSpiner/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="39ae02ce40c3ac828abbf780ce0ff5d7a28b7d6a">
-        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-49a32d234fb20d104dfc8bfb1db34c75b0003f95.jar" />
+        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/library-2.4.0-29045a2a4db57bf509bd021e25d69ed3d1bda05a.jar" />
     </item>
     <item
-        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/de.hdodenhof/circleimageview/2.0.0/jars/classes.jar"
+        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.wang.avi/library/1.0.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="031e8b3ab2df4ab43b1017f84417d7e10dfbb8d2">
-        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-6043ba7a551893cef34d03c41f3078289d9bac9e.jar" />
+        sha1="476390e81d32f9d08f9f5aab6c2b28f314a37828">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-b3d3a2ea185e5ef3b7508e221196473f9ab3ecde.jar" />
     </item>
 
 </items>

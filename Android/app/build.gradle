@@ -27,6 +27,7 @@ dependencies {
     compile 'com.android.support:design:23.1.0'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.squareup.picasso:picasso:2.5.2'
+    compile 'com.wang.avi:library:1.0.0'
     compile 'com.squareup.retrofit:retrofit:1.9.0'
     compile 'de.hdodenhof:circleimageview:2.0.0'
     compile files('libs/3rdparty_login_library_android_4.1.4.jar')

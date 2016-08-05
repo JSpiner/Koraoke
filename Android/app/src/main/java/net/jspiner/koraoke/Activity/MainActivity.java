@@ -1,6 +1,8 @@
 package net.jspiner.koraoke.Activity;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.ViewPager;
@@ -11,6 +13,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import net.jspiner.koraoke.Adapter.MainPagerAdapter;
@@ -37,6 +40,9 @@ public class MainActivity extends AppCompatActivity {
     @Bind(R.id.toolbar)
     Toolbar toolbar;
 
+    @Bind(R.id.bg_loading)
+    LinearLayout bgLoading;
+
 //    @Bind(R.id.tv_toolbar_title)
 //    TextView tvTitle;
 
@@ -56,6 +62,9 @@ public class MainActivity extends AppCompatActivity {
 
     void init(){
         ButterKnife.bind(this);
+
+
+        bgLoading.setVisibility(View.VISIBLE);
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new MainCategoryFragment(),"인기차트");
@@ -89,8 +98,17 @@ public class MainActivity extends AppCompatActivity {
         scrollView.setFillViewport(true);
 
         initToolbar();
+
+        delayHandler.sendEmptyMessageDelayed(0, 4000);
     }
 
+
+    Handler delayHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+            bgLoading.setVisibility(View.GONE);
+        }
+    };
 
     //actionbar 설정
     void initToolbar(){
