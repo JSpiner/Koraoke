@@ -16,6 +16,16 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".Activity.MainActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
+        <activity android:name=".Activity.SignupActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize"
+            android:screenOrientation="portrait">
+        </activity>
+
         <activity
             android:name="com.nhn.android.naverlogin.ui.OAuthLoginActivity"
             android:theme="@android:style/Theme.Translucent.NoTitleBar">

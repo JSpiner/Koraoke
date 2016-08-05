@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card="http://schemas.android.com/apk/res-auto"
+    xmlns:app="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:background="@color/colorCrimson"
+        android:layout_height="match_parent">
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:orientation="vertical"
+                android:layout_height="match_parent">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginBottom="0dp"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginRight="30dp"
+                    android:layout_height="450dp">
+
+                    <android.support.v7.widget.CardView
+                        android:id="@+id/cardview"
+                        card:cardCornerRadius="3dp"
+                        android:layout_marginBottom="20dp"
+                        android:layout_width="match_parent"
+                        android:background="#efefef"
+                        card:cardElevation="6dp"
+                        card:cardUseCompatPadding="true"
+                        android:layout_height="match_parent">
+
+
+                        <LinearLayout
+                            android:orientation="vertical"
+                            android:layout_width="match_parent"
+                            android:gravity="center_horizontal"
+                            android:layout_height="match_parent">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content">
+
+                                <ImageView
+                                    android:layout_marginTop="10dp"
+                                    android:layout_marginLeft="10dp"
+                                    android:layout_width="30dp"
+                                    android:layout_height="30dp"
+                                    android:background="@drawable/ic_arrow_back_grey600_48dp"/>
+
+                            </LinearLayout>
+
+                            <TextView
+                                android:layout_marginTop="20dp"
+                                android:layout_width="wrap_content"
+                                android:textStyle="bold"
+                                android:layout_height="wrap_content"
+                                android:text="기본 정보를 입력해주세요."
+                                android:textColor="#2f2f2f"
+                                android:textSize="16sp"
+                                />
+
+                            <TextView
+                                android:layout_marginTop="10dp"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_horizontal"
+                                android:textSize="14sp"
+                                android:textColor="#2f2f2f"
+                                android:text="이름과 프로필 사진은\n네이버 계정의 정보를 이용합니다 :)"/>
+
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:layout_marginTop="25dp"
+                                xmlns:app="http://schemas.android.com/apk/res-auto"
+                                android:id="@+id/profile_image"
+                                app:civ_border_width="1px"
+                                app:civ_border_color="#000000"
+                                android:layout_width="73dp"
+                                android:layout_height="73dp"
+                                android:src="@drawable/img_korea_logo"/>
+
+                            <LinearLayout
+                                android:layout_marginTop="30dp"
+                                android:layout_width="match_parent"
+                                android:orientation="vertical"
+                                android:layout_height="match_parent">
+
+                                <android.support.design.widget.TextInputLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_marginLeft="15dp"
+                                    android:layout_marginRight="15dp"
+                                    android:textColorHint="#8f8f8f"
+                                    app:hintTextAppearance="@style/TextAppearence.App.TextInputLayout"
+                                    android:layout_height="wrap_content">
+
+                                    <EditText
+                                        android:id="@+id/input_password"
+                                        android:layout_width="match_parent"
+                                        android:textColor="#2f2f2f"
+                                        android:textColorHighlight="#6f6f6f"
+                                        android:textColorHint="#8f8f8f"
+                                        android:layout_height="wrap_content"
+                                        android:hint="이름" />
+
+                                </android.support.design.widget.TextInputLayout>
+
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+
+                    </android.support.v7.widget.CardView>
+
+
+                    <android.support.design.widget.FloatingActionButton
+                        android:id="@+id/fab_signup_next"
+                        android:layout_width="wrap_content"
+                        android:layout_marginBottom="10dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="bottom|center_horizontal"
+                        android:tint="#ffffff"
+                        android:src="@drawable/ic_navigate_next_white_48dp" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_marginTop="20dp"
+                    android:layout_width="match_parent"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:id="@+id/linear_indicator"
+                    android:layout_weight="1"
+                    android:layout_height="wrap_content">
+
+                </LinearLayout>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+
+</LinearLayout>

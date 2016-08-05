@@ -43,6 +43,8 @@ public class SplashActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         initNaverOauthModule();
+
+        //TODO : 자동로그인 처리
     }
 
     void initNaverOauthModule(){
@@ -61,9 +63,12 @@ public class SplashActivity extends AppCompatActivity {
 
         @Override
         public void run(boolean b) {
-            Log.d(TAG,"login result : "+b);
+            Log.d(TAG, "login result : " + b);
             if(b){
-                Intent intent = new Intent(SplashActivity.this, MainActivity.class);
+
+                Log.d(TAG,"login info : "+OAuthLogin.getInstance().getAccessToken(getBaseContext()));
+
+                Intent intent = new Intent(SplashActivity.this, SignupActivity.class);
                 startActivity(intent);
             }
             else{
