@@ -7,22 +7,34 @@ import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuff;
+import android.graphics.drawable.Drawable;
 import android.hardware.Camera;
 import android.media.MediaPlayer;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.ScaleAnimation;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -44,16 +56,22 @@ import butterknife.ButterKnife;
  * @project Android
  * @since 2016. 8. 6.
  */
-public class CameraPlayActivity extends Activity {
+public class CameraPlayActivity extends AppCompatActivity {
 
     //로그에 쓰일 tag
     public static final String TAG = CameraPlayActivity.class.getSimpleName();
+
+    @Bind(R.id.toolbar)
+    Toolbar toolbar;
 
     @Bind(R.id.surface_camera)
     SurfaceView surfaceCamera;
 
     @Bind(R.id.lyric_cameraplay)
     LyricView lyricView;
+
+    @Bind(R.id.tv_song_count)
+    TextView tvCount;
 
     SurfaceHolder previewHolder=null;
     Camera camera=null;
@@ -84,6 +102,25 @@ public class CameraPlayActivity extends Activity {
                         + "/test.mp3")));
 
         initSurface();
+
+        initToolbar();
+    }
+
+    void initToolbar(){
+
+        setSupportActionBar(toolbar);
+        Drawable upArrow = ContextCompat.getDrawable(this, R.drawable.abc_ic_ab_back_mtrl_am_alpha);
+        upArrow.setColorFilter(Color.WHITE, PorterDuff.Mode.SRC_ATOP);
+        getSupportActionBar().setHomeAsUpIndicator(upArrow);
+
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                onBackPressed();
+            }
+        });
     }
 
     void initSurface() {
@@ -203,11 +240,63 @@ public class CameraPlayActivity extends Activity {
             inPreview=true;
         }
 
-        lyricView.setBaseInfo(musicModel, mediaPlayer);
+        lyricView.setBaseInfo(musicModel, mediaPlayer, new StartCallBack() {
+
+            @Override
+            public void startCallBack() {
+                animHandler.sendEmptyMessageDelayed(0,0);
+            }
+        });
         lyricView.start();
         mediaPlayer.start();
 
     }
+
+    int animCount = 3;
+
+    Handler animHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            if(animCount==0){
+                tvCount.setVisibility(View.GONE);
+                return;
+            }
+            tvCount.setVisibility(View.VISIBLE);
+            tvCount.setText(""+animCount);
+
+
+            AnimationSet animSet = new AnimationSet(true);
+            Animation anim;
+            Animation anim2;
+            animSet.setFillEnabled(true);
+            animSet.setFillAfter(true);
+
+            anim = new AlphaAnimation(1.0f, 0.0f);
+            anim.setDuration(1300);
+            anim.setStartOffset(0);
+            anim.setFillEnabled(true);
+            anim.setFillAfter(true);
+
+            anim2 = new ScaleAnimation(
+                    1f, 0f, 1f, 0f,
+                    Animation.RELATIVE_TO_SELF, 0.5f,
+                    Animation.RELATIVE_TO_SELF, 0.5f);
+            anim2.setDuration(1300);
+            anim2.setStartOffset(0);
+            anim2.setFillEnabled(true);
+            anim2.setFillAfter(true);
+
+            animSet.addAnimation(anim);
+            animSet.addAnimation(anim2);
+
+            tvCount.startAnimation(animSet);
+
+            animCount--;
+
+            animHandler.sendEmptyMessageDelayed(0,1300);
+        }
+    };
 
     SurfaceHolder.Callback surfaceCallback=new SurfaceHolder.Callback() {
         public void surfaceCreated(SurfaceHolder holder) {
@@ -225,5 +314,9 @@ public class CameraPlayActivity extends Activity {
 
         }
     };
+
+    public interface StartCallBack{
+        public void startCallBack();
+    }
 
 }
