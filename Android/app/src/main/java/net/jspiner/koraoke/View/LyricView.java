@@ -91,6 +91,8 @@ public class LyricView extends View {
         this.callBack = callBack;
     }
 
+    boolean eof = false;
+
     @Override
     protected void onDraw(Canvas canvas) {
 
@@ -130,8 +132,12 @@ public class LyricView extends View {
                     callBack.startCallBack();
                 }
             }
-            if(i==musicModel.lineList.size()){
-                callBack.endCallBack();
+
+            if(!eof) {
+                if (i == musicModel.lineList.size()) {
+                    callBack.endCallBack();
+                    eof = true;
+                }
             }
 
             //흰색으로 첫재줄(활성화된 글자 적음)
@@ -176,8 +182,6 @@ public class LyricView extends View {
             if(lyricList.get(i).time>
                     mediaPlayer.getCurrentPosition()) break;
         }
-
-        Canvas canvas1 = new Canvas();
 
 
         canvas.drawText(stringBuilder.toString(),

@@ -20,9 +20,12 @@ public class AudioRecord {
     private MediaRecorder mRecorder = null;
     private MediaPlayer mPlayer = null;
 
+
+
     public AudioRecord(){
         Log.e("asdf", "init");
         mRecorder = new MediaRecorder();
+        //mRecorder.setOutputFormat();
         mRecorder.setAudioSource(MediaRecorder.AudioSource.MIC);
         mRecorder.setOutputFormat(MediaRecorder.OutputFormat.THREE_GPP);
         mRecorder.setAudioEncoder(MediaRecorder.AudioEncoder.AMR_NB);
@@ -54,6 +57,7 @@ public class AudioRecord {
 
 
     }
+
 
     private void startPlaying(String fileName) {
         mPlayer = new MediaPlayer();
