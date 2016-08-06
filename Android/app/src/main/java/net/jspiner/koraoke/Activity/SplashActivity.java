@@ -1,8 +1,12 @@
 package net.jspiner.koraoke.Activity;
 
+import android.Manifest;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.widget.Toast;
@@ -38,6 +42,13 @@ public class SplashActivity extends AppCompatActivity {
     @Bind(R.id.btn_splash_login)
     OAuthLoginButton btnOauthLogin;
 
+
+    String [] permissions = {
+            Manifest.permission.CAMERA,
+            "android.permission.WRITE_EXTERNAL_STORAGE",
+
+    };
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +63,26 @@ public class SplashActivity extends AppCompatActivity {
 
         initNaverOauthModule();
 
+
+        if (!checkPermission()) {
+            ActivityCompat.requestPermissions(this,
+                    permissions,
+                    101); // define this constant yourself
+        }
+
         //TODO : 자동로그인 처리
+    }
+
+    boolean checkPermission(){
+        for(String permission : permissions){
+
+            Log.d(TAG,"permission : "+permission);
+            int permissionCheck = ContextCompat.checkSelfPermission(this,
+                    permission);
+
+            if (permissionCheck != PackageManager.PERMISSION_GRANTED)  return false;
+        }
+        return true;
     }
 
     void initNaverOauthModule(){

@@ -109,7 +109,7 @@ public class MainActivity extends AppCompatActivity {
 
         initToolbar();
 
-        delayHandler.sendEmptyMessageDelayed(0, 4000);
+        delayHandler.sendEmptyMessageDelayed(0, 3000);
     }
 
 

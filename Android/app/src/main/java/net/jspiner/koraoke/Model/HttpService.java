@@ -5,6 +5,7 @@ import retrofit.client.Response;
 import retrofit.http.FormUrlEncoded;
 import retrofit.http.GET;
 import retrofit.http.POST;
+import retrofit.http.Query;
 
 /**
  * Copyright 2016 JSpiner. All rights reserved.
@@ -21,5 +22,13 @@ public interface HttpService {
 
     @GET("/koraoke/api/GetSongList.php")
     void GetSongList(Callback<Response> ret);
+
+    @GET("/koraoke/api/GetSongHit.php")
+    void GetSongHit(@Query("songId") int songId,
+                    Callback<HitModel> ret);
+
+    @GET("/koraoke/api/GetSongRank.php")
+    void GetSongRank(@Query("songId") int songId,
+                    Callback<HitModel> ret);
 
 }

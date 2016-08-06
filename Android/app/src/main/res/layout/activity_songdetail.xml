@@ -46,6 +46,7 @@
                 <TextView
                     android:textStyle="bold"
                     android:textSize="17sp"
+                    android:id="@+id/tv_song_title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="고대를 노래하라"/>
@@ -53,6 +54,7 @@
                 <TextView
                     android:layout_marginTop="10dp"
                     android:textSize="12sp"
+                    android:id="@+id/tv_song_content"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="워워~ 워워워~ 지금 이순간 이자리 이곳에서.."/>
@@ -62,6 +64,7 @@
             <ImageView
                 android:layout_width="150dp"
                 android:layout_gravity="bottom"
+                android:id="@+id/imv_song_album"
                 android:layout_height="150dp"
                 android:src="@drawable/img_album_1"/>
 
@@ -84,9 +87,9 @@
             card:cardCornerRadius="3dp"
             android:layout_marginBottom="30dp"
             android:layout_width="match_parent"
-            android:layout_marginLeft="30dp"
+            android:layout_marginLeft="13dp"
             android:layout_marginTop="10dp"
-            android:layout_marginRight="30dp"
+            android:layout_marginRight="13dp"
             android:background="#efefef"
             card:cardElevation="6dp"
             card:cardUseCompatPadding="true"
@@ -116,6 +119,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#2f2f2f"
                             android:textSize="24sp"
+                            android:id="@+id/tv_song_playcount"
                             android:textStyle="bold"
                             android:text="1024"/>
 
@@ -147,6 +151,7 @@
                             android:layout_height="wrap_content"
                             android:textColor="#2f2f2f"
                             android:textSize="24sp"
+                            android:id="@+id/tv_song_rank"
                             android:textStyle="bold"
                             android:text="3"/>
 
@@ -156,7 +161,7 @@
                             android:layout_marginTop="5dp"
                             android:textColor="#ababab"
                             android:layout_height="wrap_content"
-                            android:text="순위"/>
+                            android:text="번째 포효"/>
 
 
                     </LinearLayout>
@@ -183,8 +188,7 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:text="응원 시작"
-
-                        android:id="@+id/button" />
+                        android:id="@+id/btn_song_start" />
                 </LinearLayout>
 
             </LinearLayout>

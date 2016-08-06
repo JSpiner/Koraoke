@@ -10,6 +10,8 @@ import android.view.ViewGroup;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.google.gson.Gson;
+
 import net.jspiner.koraoke.Activity.SongDetailActivity;
 import net.jspiner.koraoke.Adapter.MainMusicAdapter;
 import net.jspiner.koraoke.Model.LineObject;
@@ -45,6 +47,8 @@ public class MainCategoryFragment extends Fragment {
 
     @Bind(R.id.lv_main)
     ListView lvMain;
+
+    MainMusicAdapter adapter;
 
     public MainCategoryFragment() {
 
@@ -103,7 +107,7 @@ public class MainCategoryFragment extends Fragment {
                             }
 
 
-                            MainMusicAdapter adapter = new MainMusicAdapter(getContext(), musicList);
+                            adapter = new MainMusicAdapter(getContext(), musicList);
 
                             lvMain.setAdapter(adapter);
 
@@ -122,8 +126,9 @@ public class MainCategoryFragment extends Fragment {
     }
 
     @OnItemClick(R.id.lv_main)
-    void onListItemClick(){
+    void onListItemClick(int position){
         Intent intent = new Intent(getContext(), SongDetailActivity.class);
+        intent.putExtra("json", new Gson().toJson(adapter.musicList.get(position)));
         startActivity(intent);
     }
 
