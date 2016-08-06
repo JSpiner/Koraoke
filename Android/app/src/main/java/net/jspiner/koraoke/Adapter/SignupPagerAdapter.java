@@ -9,9 +9,13 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.TextView;
 
+import com.squareup.picasso.Picasso;
+
+import net.jspiner.koraoke.Model.UserModel;
 import net.jspiner.koraoke.R;
 import net.jspiner.koraoke.Util;
 
@@ -58,6 +62,11 @@ public class SignupPagerAdapter extends PagerAdapter {
                 binder1.tvPrivacy2.setText(Html.fromHtml(policyText));
                 break;
             case 1:
+                ViewBinder2 binder2 = new ViewBinder2(view);
+                Picasso.with(context)
+                        .load(UserModel.getInstance().profile_image)
+                        .fit()
+                        .into(binder2.imvProfile);
                 break;
             case 2:
                 ViewBinder3 binder3 = new ViewBinder3(view);
@@ -99,6 +108,9 @@ public class SignupPagerAdapter extends PagerAdapter {
     }
 
     class ViewBinder2{
+
+        @Bind(R.id.profile_image)
+        ImageView imvProfile;
 
         public ViewBinder2(View view){
             ButterKnife.bind(this, view);

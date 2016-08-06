@@ -7,5 +7,7 @@ package net.jspiner.koraoke.Model;
  * @project Android
  * @since 2016. 8. 6.
  */
-public class MusicObject {
+public class LyricObject {
+    public String gasa;
+    public long time;
 }

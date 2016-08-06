@@ -3,6 +3,7 @@
     <string name="naver_api_client_id">D94VLFSb7LPGNBcqp1Tt</string>
     <string name="naver_api_client_secret">v4IuIeIvvo</string>
     <string name="naver_api_client_name">Koraoke</string>
+    <string name="API_SERVER">http://somabob.azurewebsites.net</string>
 
     <string-array name="ku_college">
         <item>법과대학</item>

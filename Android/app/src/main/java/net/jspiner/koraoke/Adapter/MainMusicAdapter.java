@@ -2,8 +2,6 @@ package net.jspiner.koraoke.Adapter;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Color;
-import android.util.Log;
 import android.util.SparseArray;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,18 +12,15 @@ import android.widget.TextView;
 
 import com.squareup.picasso.Picasso;
 
-import net.jspiner.koraoke.Model.MusicObject;
+import net.jspiner.koraoke.Model.LyricObject;
+import net.jspiner.koraoke.Model.MusicModel;
 import net.jspiner.koraoke.R;
-import net.jspiner.koraoke.Util;
-
-import org.w3c.dom.Text;
 
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import butterknife.OnClick;
 
 /**
  * Copyright 2016 JSpiner. All rights reserved.
@@ -43,12 +38,12 @@ public class MainMusicAdapter extends BaseAdapter{
 
     private SparseArray<WeakReference<View>> viewArray;
 
-    public ArrayList<MusicObject> musicList;
+    public ArrayList<MusicModel> musicList;
     Context context;
 
     ProgressDialog mProgressDialog;
 
-    public MainMusicAdapter(Context context, ArrayList<MusicObject> musicList){
+    public MainMusicAdapter(Context context, ArrayList<MusicModel> musicList){
         this.context = context;
         this.musicList = musicList;
         this.viewArray = new SparseArray<WeakReference<View>>(musicList.size());
@@ -57,18 +52,6 @@ public class MainMusicAdapter extends BaseAdapter{
 
     int[] albums = {
       R.drawable.img_album_1, R.drawable.img_album_2, R.drawable.img_album_3
-    };
-
-    String[] titles = {
-            "민족의 아리아",
-            "뱃노래",
-            "Forever"
-    };
-
-    String[] lyrics = {
-            "타오르는 자유 나아가는 정의 솟구치는 진리 민족의...",
-            "즐거운 고연전 날에 연대생 우는 소리 지고 가는 ...",
-            "워-워-워워워 워워워워 우리의 함성은 신화가 되리라.."
     };
 
     @Override
@@ -81,18 +64,19 @@ public class MainMusicAdapter extends BaseAdapter{
 
         try {
 
-            MusicObject musicObject = musicList.get(position);
+            MusicModel musicObject = musicList.get(position);
 
             convertView = inflater.inflate(R.layout.item_main_music, null);
 
             ViewBinder binder = new ViewBinder(convertView, position);
 
             Picasso.with(context)
-                    .load(albums[position%3])
+                    .load(context.getString(R.string.API_SERVER)+"/koraoke/image/"+musicObject.songId+".png")
                     .fit()
                     .into(binder.imvAlbum);
-            binder.tvTitle.setText(titles[position%3]);
-            binder.tvLyric.setText(lyrics[position%3]);
+            binder.tvTitle.setText(musicObject.songName);
+            binder.tvLyric.setText(musicObject.songFirstline+"..");
+            binder.tvYear.setText(""+musicObject.songReleaseYear);
 
         } finally {
             viewArray.put(position, new WeakReference<View>(convertView));
