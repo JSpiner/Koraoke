@@ -100,6 +100,9 @@ public class LyricView extends View {
                     callBack.startCallBack();
                 }
             }
+            if(i==musicModel.lineList.size()){
+                callBack.endCallBack();
+            }
 
 
             drawLyricLine(canvas, i - 1, 0);

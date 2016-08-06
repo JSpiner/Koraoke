@@ -2,18 +2,39 @@
 <items version="2" >
 
     <item
-        jar="/Users/JSpiner/.gradle/caches/modules-2/files-2.1/com.nineoldandroids/library/2.4.0/e9b63380f3a242dbdbf103a2355ad7e43bad17cb/library-2.4.0.jar"
+        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="e9b63380f3a242dbdbf103a2355ad7e43bad17cb">
-        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/library-2.4.0-29045a2a4db57bf509bd021e25d69ed3d1bda05a.jar" />
+        sha1="ddde541c289c8b816a8f8fd6c325d80788c522a6">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-38b163e45a0079fdf681e65c795576adc292f4aa.jar" />
     </item>
     <item
-        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.wang.avi/library/1.0.0/jars/classes.jar"
+        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.android.support/recyclerview-v7/23.1.0/jars/classes.jar"
         jumboMode="false"
         revision="23.0.2"
-        sha1="476390e81d32f9d08f9f5aab6c2b28f314a37828">
-        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-b3d3a2ea185e5ef3b7508e221196473f9ab3ecde.jar" />
+        sha1="3f151e49c316a5ab2c065969a3b3b55ef9b393fc">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-e51fce23ff67b57aa335674904e0dda4f0072232.jar" />
+    </item>
+    <item
+        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.1.0/jars/libs/internal_impl-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="8716243bf04bae8d6c9ca94d27b9a9be7236f0a3">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/internal_impl-23.1.0-196993051d0d45ea266aea7221390a3179ce8ef3.jar" />
+    </item>
+    <item
+        jar="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.1.0/jars/classes.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="57ae0d750ff83f0c738d21720224ac7ea866a094">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/classes-11eac4276a6cfcae4d7cabf2ba06ed796c947c40.jar" />
+    </item>
+    <item
+        jar="/Users/JSpiner/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.1.0/support-annotations-23.1.0.jar"
+        jumboMode="false"
+        revision="23.0.2"
+        sha1="92e3fc113ec3ee36b64603a38857b95700025633">
+        <dex dex="/Users/JSpiner/AndroidStudioProjects/Koraoke/Android/app/build/intermediates/pre-dexed/debug/support-annotations-23.1.0-fbb76f3c53535939d6960d4de39f3f7a299e3983.jar" />
     </item>
 
 </items>

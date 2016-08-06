@@ -1,6 +1,8 @@
 package net.jspiner.koraoke.Activity;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.ActivityInfo;
 import android.graphics.Canvas;
@@ -246,11 +248,46 @@ public class CameraPlayActivity extends AppCompatActivity {
             public void startCallBack() {
                 animHandler.sendEmptyMessageDelayed(0,0);
             }
+
+            @Override
+            public void endCallBack() {
+                endHandler.sendEmptyMessageDelayed(0,6000);
+            }
         });
         lyricView.start();
         mediaPlayer.start();
 
     }
+
+    Handler endHandler = new Handler(){
+        @Override
+        public void handleMessage(Message msg) {
+
+            AlertDialog.Builder builder = new AlertDialog.Builder(CameraPlayActivity.this);
+            builder.setTitle("축하합니다.");
+            builder.setMessage("72점을 기록하셨습니다. 동영상을 저장하거나 다시 응원하실 수 있습니다!");
+            builder.setPositiveButton("확인", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialog, int which) {
+
+                }
+            })
+                    .setNegativeButton("취소", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    })
+                    .setNeutralButton("재도전", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                        }
+                    });
+            builder.create().show();
+
+        }
+    };
 
     int animCount = 3;
 
@@ -317,6 +354,7 @@ public class CameraPlayActivity extends AppCompatActivity {
 
     public interface StartCallBack{
         public void startCallBack();
+        public void endCallBack();
     }
 
 }
