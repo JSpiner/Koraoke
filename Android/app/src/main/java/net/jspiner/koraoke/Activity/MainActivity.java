@@ -72,9 +72,7 @@ public class MainActivity extends AppCompatActivity {
     void init() {
         ButterKnife.bind(this);
 
-
         bgLoading.setVisibility(View.VISIBLE);
-
 
         MainPagerAdapter adapter = new MainPagerAdapter(getSupportFragmentManager());
         adapter.addFrag(new MainCategoryFragment(), "인기차트");

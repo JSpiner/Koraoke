@@ -154,7 +154,10 @@ public class SongDetailActivity extends AppCompatActivity {
 
                 // execute this when the downloader must be fired
                 final DownloadTask downloadTask = new DownloadTask(SongDetailActivity.this);
-                downloadTask.execute("http://somabob.azurewebsites.net/koraoke/mp3/1.mp3");
+
+//                startActivity();
+
+                downloadTask.execute("http://somabob.azurewebsites.net/koraoke/mp3/"+musicModel.songId+".mp3");
 
                 mProgressDialog.setOnCancelListener(new DialogInterface.OnCancelListener() {
                     @Override
@@ -269,9 +272,20 @@ public class SongDetailActivity extends AppCompatActivity {
             mProgressDialog.dismiss();
             if (result != null)
                 Toast.makeText(context, "Download error: " + result, Toast.LENGTH_LONG).show();
-            else
-                Toast.makeText(context,"File downloaded", Toast.LENGTH_SHORT).show();
+            else {
+                Toast.makeText(context, "File downloaded", Toast.LENGTH_SHORT).show();
+
+
+                startActivity();
+            }
         }
+    }
+
+    void startActivity(){
+
+        Intent intent = new Intent(SongDetailActivity.this, CameraPlayActivity.class);
+        intent.putExtra("json", new Gson().toJson(musicModel));
+        startActivity(intent);
     }
 
 }

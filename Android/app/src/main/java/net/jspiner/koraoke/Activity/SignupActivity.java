@@ -59,7 +59,6 @@ public class SignupActivity extends AppCompatActivity {
                 )
         );
 
-
         viewIndicator = new View[3];
         for (int i = 0; i < 3; i++) {
             viewIndicator[i] = new View(getBaseContext());

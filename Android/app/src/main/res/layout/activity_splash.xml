@@ -14,11 +14,11 @@
             android:adjustViewBounds="true"
             android:layout_width="200dp"
             android:layout_height="wrap_content"
-            android:src="@drawable/img_korea_logo"/>
+            android:src="@drawable/ic_ku_logo"/>
 
         <com.nhn.android.naverlogin.ui.view.OAuthLoginButton
             android:id="@+id/btn_splash_login"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="50dp"
             android:layout_width="wrap_content"
             android:layout_height="50dp" />
 

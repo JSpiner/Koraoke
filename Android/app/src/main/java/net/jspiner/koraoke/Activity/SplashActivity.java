@@ -46,6 +46,7 @@ public class SplashActivity extends AppCompatActivity {
     String [] permissions = {
             Manifest.permission.CAMERA,
             "android.permission.WRITE_EXTERNAL_STORAGE",
+            "android.permission.READ_EXTERNAL_STORAGE",
 
     };
 
@@ -95,6 +96,8 @@ public class SplashActivity extends AppCompatActivity {
         );
 
         btnOauthLogin.setOAuthLoginHandler(oAuthLoginHandler);
+
+
     }
 
     OAuthLoginHandler oAuthLoginHandler = new OAuthLoginHandler(){
