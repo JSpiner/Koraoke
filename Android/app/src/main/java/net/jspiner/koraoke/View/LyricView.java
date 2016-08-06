@@ -13,11 +13,14 @@ import android.util.Log;
 import android.view.View;
 
 import net.jspiner.koraoke.Activity.CameraPlayActivity;
+import net.jspiner.koraoke.AudioRecord;
 import net.jspiner.koraoke.Model.LyricObject;
 import net.jspiner.koraoke.Model.MusicModel;
 import net.jspiner.koraoke.R;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 /**
  * Copyright 2016 JSpiner. All rights reserved.
@@ -46,6 +49,13 @@ public class LyricView extends View {
     MediaPlayer  mediaPlayer;
 
     CameraPlayActivity.StartCallBack callBack;
+
+    /////////
+    AudioRecord audio;
+    int now = 0;
+    int dontcome = 0;
+
+    ///////
 
     public LyricView(Context context) {
         super(context);
@@ -87,9 +97,29 @@ public class LyricView extends View {
         if(isStarted){
             int i;
 
+            //라인돌아다니면서 현재 재생할 라인 찾음
             for(i=0;i<musicModel.lineList.size();i++){
                 if(musicModel.lineList.get(i).lyricList.get(0).time >
-                        mediaPlayer.getCurrentPosition()){ break;
+                        mediaPlayer.getCurrentPosition()){
+
+
+                 //////////////////
+                    SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMdd_HHmmss");
+                    String currentDateandTime = sdf.format(new Date());
+                    if(i == 5 && dontcome == 0){
+                        audio = new AudioRecord();
+                        audio.startRecord(currentDateandTime);
+                        dontcome = 1;
+                    }
+                    if(i == 6 && dontcome == 1){
+                        audio.stopRecording();
+                        dontcome = 2;
+                    }
+                    //포에버의 경우 "우리의 함성은 신화가 되리라 부분임.
+                ////////////////////
+
+
+                        break;
                 }
             }
 
@@ -104,10 +134,14 @@ public class LyricView extends View {
                 callBack.endCallBack();
             }
 
-
+            //흰색으로 첫재줄(활성화된 글자 적음)
             drawLyricLine(canvas, i - 1, 0);
+            //노란색으로 첫재줄(활성화된 글자 덮어씌움);
             drawColorLyricLine(canvas, i - 1, 0);
+            //흰색으로 둘재줄 채움
             drawLyricLine(canvas, i, 1);
+
+
 
 /*
             Bitmap bitmap = BitmapFactory.decodeResource(getResources(), R.drawable.img_album_1);
@@ -118,6 +152,7 @@ public class LyricView extends View {
                     paintAlpha);*/
 
             int lastTime = (mediaPlayer.getDuration() - mediaPlayer.getCurrentPosition()) / 1000;
+
 
             canvas.drawText("-" + (lastTime / 60) + ":" + (lastTime % 60),
                     1200, 330,

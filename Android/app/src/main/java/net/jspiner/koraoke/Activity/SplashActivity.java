@@ -47,6 +47,7 @@ public class SplashActivity extends AppCompatActivity {
             Manifest.permission.CAMERA,
             "android.permission.WRITE_EXTERNAL_STORAGE",
             "android.permission.READ_EXTERNAL_STORAGE",
+            "android.permission.RECORD_AUDIO",
 
     };
 
@@ -58,7 +59,7 @@ public class SplashActivity extends AppCompatActivity {
         init();
     }
 
-    void init(){
+    void init() {
 
         ButterKnife.bind(this);
 

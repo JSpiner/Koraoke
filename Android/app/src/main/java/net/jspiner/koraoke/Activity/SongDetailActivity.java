@@ -94,7 +94,7 @@ public class SongDetailActivity extends AppCompatActivity {
         Log.d(TAG,"JSON : " + new Gson().toJson(musicModel));
 
         tvTitle.setText(musicModel.songName);
-        tvContent.setText(musicModel.songFirstline+"..");
+        tvContent.setText(musicModel.songFirstline + "..");
         Picasso.with(getBaseContext())
                 .load(getString(R.string.API_SERVER)+"/koraoke/image/"+musicModel.songId+".png")
                 .fit()
@@ -115,6 +115,18 @@ public class SongDetailActivity extends AppCompatActivity {
 
                     }
                 });
+
+        Util.getHttpSerivce().GetSongRank(musicModel.songId, new Callback<HitModel>() {
+            @Override
+            public void success(HitModel response, Response response2) {
+                tvRank.setText(""+response.message);
+            }
+
+            @Override
+            public void failure(RetrofitError error) {
+
+            }
+        });
 
 
         // instantiate it within the onCreate method

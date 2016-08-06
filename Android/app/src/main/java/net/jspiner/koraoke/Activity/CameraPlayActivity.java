@@ -41,8 +41,12 @@ import android.widget.Toast;
 
 import com.google.gson.Gson;
 
+import net.jspiner.koraoke.Model.HitModel;
 import net.jspiner.koraoke.Model.MusicModel;
+import net.jspiner.koraoke.Model.ScoreAddModel;
+import net.jspiner.koraoke.Model.ScoreModel;
 import net.jspiner.koraoke.R;
+import net.jspiner.koraoke.Util;
 import net.jspiner.koraoke.View.LyricView;
 
 import java.io.File;
@@ -50,6 +54,9 @@ import java.io.FileOutputStream;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import retrofit.Callback;
+import retrofit.RetrofitError;
+import retrofit.client.Response;
 
 /**
  * Copyright 2016 JSpiner. All rights reserved.
@@ -84,6 +91,9 @@ public class CameraPlayActivity extends AppCompatActivity {
 
     MediaPlayer mediaPlayer;
 
+    int _songId = 0;
+    int lastpang = 0;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -97,7 +107,7 @@ public class CameraPlayActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         musicModel = new Gson().fromJson(intent.getStringExtra("json"), MusicModel.class);
-
+        _songId = musicModel.songId;
         Log.d("asdf", Environment.getExternalStorageDirectory().getAbsoluteFile().toString());
         mediaPlayer = MediaPlayer.create(getBaseContext(), Uri.fromFile(new File(
                 Environment.getExternalStorageDirectory().getAbsoluteFile()
@@ -251,7 +261,10 @@ public class CameraPlayActivity extends AppCompatActivity {
 
             @Override
             public void endCallBack() {
-                endHandler.sendEmptyMessageDelayed(0,6000);
+                endHandler.sendEmptyMessageDelayed(0, 6000);
+
+
+
             }
         });
         lyricView.start();
@@ -262,6 +275,24 @@ public class CameraPlayActivity extends AppCompatActivity {
     Handler endHandler = new Handler(){
         @Override
         public void handleMessage(Message msg) {
+
+            if(lastpang == 0){ // 시바~ 430 개 들어감
+                Util.getHttpSerivce().PostAddScore(1, _songId, 80, new retrofit.Callback<ScoreAddModel>() {
+                    // uId, songId, score
+                    @Override
+                    public void success(ScoreAddModel scoreModel, Response response) {
+                        Log.e("asdf","retrofit success score");
+
+                    }
+
+                    @Override
+                    public void failure(RetrofitError error) {
+                        Log.e("asdf",error.toString());
+                    }
+                });
+                lastpang = 999;
+            }
+
 
             AlertDialog.Builder builder = new AlertDialog.Builder(CameraPlayActivity.this);
             builder.setTitle("축하합니다.");
